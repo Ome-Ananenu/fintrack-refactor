@@ -7,7 +7,7 @@ import { accessToken } from "../helpers/helperFunc";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-import swal from "sweetalert";
+const swal = require('sweetalert');
 import "../styles/request.css";
 
 const ClientRequest = () => {

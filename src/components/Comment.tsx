@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import Card from "react-bootstrap/esm/Card";
-import swal from "sweetalert";
+const swal = require('sweetalert');
 import jwt_decode from "jwt-decode";
 import { accessToken, User } from "../helpers/helperFunc";
 import { useLocation } from "react-router-dom";
