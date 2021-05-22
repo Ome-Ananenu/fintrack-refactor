@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../styles/request.css";
 
+
 const ClientRequest = () => {
   let {
     isAdmin,
@@ -70,18 +71,16 @@ const ClientRequest = () => {
         "Content-type": "application/json; charset=UTF-8",
         Authorization: `Bearer ${accessToken}`,
       },
-    })
-      .then((response) =>
-        response.json()
-        .then((data) => {
-          if (data.message === "Request has been created") {
-            Swal.fire("New Request Created");
-            history.push("/dashboard");
-          } else {
-            Swal.fire(data.message);
-          }
-        })
-      );
+    }).then((response) =>
+      response.json().then((data) => {
+        if (data.message === "Request has been created") {
+          Swal.fire("New Request Created");
+          history.push("/dashboard");
+        } else {
+          Swal.fire(data.message);
+        }
+      })
+    );
   };
 
   return (
@@ -91,87 +90,89 @@ const ClientRequest = () => {
           <b>Create Request</b>
         </Card.Header>
         <Card.Body className="cardbody">
-          <Form className="form" action="" onSubmit={submitRequest}>
-            <Form.Group>
-              <Form.Label style={{ paddingTop: "40px" }}>Title</Form.Label>
-              <Form.Control
-                name="title"
-                value={data.title}
-                onChange={(e) => onChangeHandler(e)}
-                type="text"
-              />
-            </Form.Group>
-            <Form.Group
-              style={{ display: !isAdmin && !isAgent ? "none" : "default" }}
-            >
-              <Form.Label style={{ paddingTop: "20px" }}>Email</Form.Label>
-              <Form.Control
-                name="email"
-                value={data.email}
-                onChange={(e) => onChangeHandler(e)}
-                type="text"
-              />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlTextarea1"></Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label style={{ paddingTop: "20px" }}>Requests</Form.Label>
-              <Form.Control
-                name="request"
-                value={data.request}
-                onChange={(e) => onChangeHandler(e)}
-                as="select"
+            <Form className="form" action="" onSubmit={submitRequest}>
+              <Form.Group>
+                <Form.Label style={{ paddingTop: "40px" }}>Title</Form.Label>
+                <Form.Control
+                  name="title"
+                  value={data.title}
+                  onChange={(e) => onChangeHandler(e)}
+                  type="text"
+                />
+              </Form.Group>
+              <Form.Group
+                style={{ display: !isAdmin && !isAgent ? "none" : "default" }}
               >
-                <option selected>Refund</option>
-                <option>Invoice</option>
-                <option>Loan</option>
-                <option>Upfront</option>
-                <option>Stipend</option>
-                <option>Others</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1"></Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label style={{ paddingTop: "20px" }}>Amount</Form.Label>
-              <Form.Control
-                name="amount"
-                value={data.amount}
-                onChange={(e) => onChangeHandler(e)}
-                type="number"
-              />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label style={{ paddingTop: "20px" }}>Summary</Form.Label>
-              <Form.Control
-                name="summary"
-                value={data.summary}
-                onChange={(e) => onChangeHandler(e)}
-                as="textarea"
-                rows={3}
-              />
-            </Form.Group>
-            <Form.Group style={{ paddingBottom: "30px" }}>
-              <Form.Label style={{ paddingTop: "20px" }}>Approvers</Form.Label>
-              <Form.Control
-                name="approvers"
-                value={data.approvers}
-                onChange={(e) => onChangeHandler(e)}
-                type="text"
-              />
-            </Form.Group>
-            <Form.Group className="formgroup">
-              <Form.Label className="pointers">Upload Image</Form.Label>
-              <Form.Control
-                style={{ width: "100px", position: "absolute", opacity: "0" }}
-                type="file"
-                accept="image/*"
-                id="single"
-                onChange={(e) => onChangeHandler(e)}
-              />
-            </Form.Group>
-            <Button className="formbtn" type="submit" variant="success">
-              Submit
-            </Button>
-          </Form>
+                <Form.Label style={{ paddingTop: "20px" }}>Email</Form.Label>
+                <Form.Control
+                  name="email"
+                  value={data.email}
+                  onChange={(e) => onChangeHandler(e)}
+                  type="text"
+                />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1"></Form.Group>
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label style={{ paddingTop: "20px" }}>Requests</Form.Label>
+                <Form.Control
+                  name="request"
+                  value={data.request}
+                  onChange={(e) => onChangeHandler(e)}
+                  as="select"
+                >
+                  <option selected>Refund</option>
+                  <option>Invoice</option>
+                  <option>Loan</option>
+                  <option>Upfront</option>
+                  <option>Stipend</option>
+                  <option>Others</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlSelect1"></Form.Group>
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label style={{ paddingTop: "20px" }}>Amount</Form.Label>
+                <Form.Control
+                  name="amount"
+                  value={data.amount}
+                  onChange={(e) => onChangeHandler(e)}
+                  type="number"
+                />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label style={{ paddingTop: "20px" }}>Summary</Form.Label>
+                <Form.Control
+                  name="summary"
+                  value={data.summary}
+                  onChange={(e) => onChangeHandler(e)}
+                  as="textarea"
+                  rows={3}
+                />
+              </Form.Group>
+              <Form.Group style={{ paddingBottom: "30px" }}>
+                <Form.Label style={{ paddingTop: "20px" }}>
+                  Approvers
+                </Form.Label>
+                <Form.Control
+                  name="approvers"
+                  value={data.approvers}
+                  onChange={(e) => onChangeHandler(e)}
+                  type="text"
+                />
+              </Form.Group>
+              <Form.Group className="formgroup">
+                <Form.Label className="pointers">Upload Image</Form.Label>
+                <Form.Control
+                  style={{ width: "100px", position: "absolute", opacity: "0" }}
+                  type="file"
+                  accept="image/*"
+                  id="single"
+                  onChange={(e) => onChangeHandler(e)}
+                />
+              </Form.Group>
+              <Button className="formbtn" type="submit" variant="success">
+                Submit
+              </Button>
+            </Form>
         </Card.Body>
       </Card>
     </div>
