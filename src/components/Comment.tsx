@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import Card from "react-bootstrap/esm/Card";
-const swal = require('sweetalert');
+import Swal from "sweetalert2";
 import jwt_decode from "jwt-decode";
 import { accessToken, User } from "../helpers/helperFunc";
 import { useLocation } from "react-router-dom";
@@ -46,7 +46,7 @@ const Comment = (props: any) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => swal("Done", data.message, "Success"));
+      .then((data) => Swal.fire("Done", data.message));
     window.location.reload();
   };
 

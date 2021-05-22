@@ -7,7 +7,6 @@ import { accessToken } from "../helpers/helperFunc";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-const swal = require('sweetalert');
 import "../styles/request.css";
 
 const ClientRequest = () => {
@@ -76,10 +75,10 @@ const ClientRequest = () => {
         response.json()
         .then((data) => {
           if (data.message === "Request has been created") {
-            swal("New Request Created");
+            Swal.fire("New Request Created");
             history.push("/dashboard");
           } else {
-            swal(data.message);
+            Swal.fire(data.message);
           }
         })
       );
