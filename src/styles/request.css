@@ -1,0 +1,31 @@
+.cardhead {
+  background: rgb(40, 41, 64);
+  color: #fff;
+  padding: 2.5rem 0rem;
+  text-align: center;
+  font-size: 1.7rem;
+}
+.cardbody {
+  background: #fff;
+  padding-bottom: 70px;
+}
+.formgroup {
+  position: relative;
+  width: 130px;
+  height: 40px;
+  border: 1px solid green;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green;
+  font-weight: normal;
+  cursor: pointer;
+  padding-top: 5px;
+  font-size: 14px;
+}
+.formbtn {
+  display: block;
+  margin-top: 9px;
+  font-size: 17px;
+}
